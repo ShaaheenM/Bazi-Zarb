@@ -13,6 +13,7 @@ let digits = [1,2,3,4,5,6,7,8,9];
      else {
       digits = digits.filter(digit => Number(this.value) != digit);
      }
+     clearTimeout(answerTimeout);
       showRanNums()
     }
   });
@@ -29,6 +30,7 @@ let answerTimeout;
     return [ranNum1, ranNum2];
   }
   function showRanNums(){
+   
     const [ran1, ran2] = makeRanNums();
     if(!ran1){
       zarbOutput.innerText = "حد اقل یک عدد انتخاب کنید";

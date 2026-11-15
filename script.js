@@ -3,6 +3,7 @@ let digits = [1,2,3,4,5,6,7,8,9];
   const answerInput = document.getElementById("answer-input");
   const answerOutput = document.getElementById("answer-output");
   const digitsEls = Array.from(document.querySelectorAll("input[type='checkbox']"));
+  const questionTime = document.querySelector("#question-time");
   
   digitsEls.forEach(el => {
     el.onchange = function() {
@@ -47,12 +48,12 @@ let answerTimeout;
     playWrongSound();
     return;
      //}
-    }, 3000);
+    }, Number(questionTime.value) * 1000);
    }
   }
-  window.onload = () => {
-    showRanNums()
-  }
+  //window.onload = () => {
+ //   showRanNums()
+//  }
   function checkAnswer(){
    //if(answerInput.value.length == 1 && ranNum1 * ranNum2 != answerInput.value){
     //crrntVal = answerInput.value;
@@ -184,3 +185,11 @@ stopModal.addEventListener("animationend", (event) => {
     stopModal.classList.remove("hide");
   }
 });
+
+
+window.onload = () => {
+    //showRanNums()
+ stopModal.showModal();
+ stopModal.classList.remove("hide");
+  stopModal.classList.add("show");
+  }

@@ -46,18 +46,14 @@ function makeRanNums() {
         if (!isRepeated) {
             break;
         }
-
-        console.log("Repeated found!");
+     
     }
 
     if (recentNums.length >= 10) {
         recentNums.shift();
     }
-
+ 
     recentNums.push(nums);
-
-    console.log(recentNums);
-
     return nums;
 }
   function showRanNums(){
@@ -70,24 +66,18 @@ function makeRanNums() {
     zarbOutput.innerText = ran1 + " × " + ran2;
    if(!isFirstTime){
     answerTimeout = setTimeout(function(){
-     //if(answerInput.value && crrntVal == answerInput.value){
       answerOutput.innerText = " جواب میشد: " + ranNum1 * ranNum2;
     highlightAnswer("highlight-false");
     answerInput.value = "";
     showRanNums();
     playWrongSound();
     return;
-     //}
+     
     }, (Number(questionTime.value) * 1000) || 3000);
    }
   }
-  //window.onload = () => {
- //   showRanNums()
-//  }
+ 
   function checkAnswer(){
-   //if(answerInput.value.length == 1 && ranNum1 * ranNum2 != answerInput.value){
-    //crrntVal = answerInput.value;
-   //}
    if(answerInput.value.length == 2 && ranNum1 * ranNum2 != answerInput.value){
     answerOutput.innerText = "خیر جواب میشد: " + ranNum1 * ranNum2;
     highlightAnswer("highlight-false");
@@ -218,7 +208,6 @@ stopModal.addEventListener("animationend", (event) => {
 
 
 window.onload = () => {
-    //showRanNums()
  stopModal.showModal();
  stopModal.classList.remove("hide");
   stopModal.classList.add("show");

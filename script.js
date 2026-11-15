@@ -23,13 +23,43 @@ let digits = [1,2,3,4,5,6,7,8,9];
   let ranNum2;
   let isFirstTime = true;
 let answerTimeout;
-  function makeRanNums(){
-    const digitsCount = digits.length;
-    const ran1 = Math.floor(Math.random() * digitsCount);
-    ranNum1 = digits[ran1];
-    ranNum2 = Math.floor(Math.random() * 9);
-    return [ranNum1, ranNum2];
-  }
+
+  const recentNums = [];
+
+function makeRanNums() {
+    let nums;
+
+    while (true) {
+        const digitsCount = digits.length;
+
+        const ran1 = Math.floor(Math.random() * digitsCount);
+        ranNum1 = digits[ran1];
+
+        ranNum2 = Math.floor(Math.random() * 9);
+
+        nums = [ranNum1, ranNum2];
+
+        const isRepeated = recentNums.some(([a, b]) =>
+            a === nums[0] && b === nums[1]
+        );
+
+        if (!isRepeated) {
+            break;
+        }
+
+        console.log("Repeated found!");
+    }
+
+    if (recentNums.length >= 10) {
+        recentNums.shift();
+    }
+
+    recentNums.push(nums);
+
+    console.log(recentNums);
+
+    return nums;
+}
   function showRanNums(){
    
     const [ran1, ran2] = makeRanNums();
@@ -48,7 +78,7 @@ let answerTimeout;
     playWrongSound();
     return;
      //}
-    }, Number(questionTime.value) * 1000);
+    }, (Number(questionTime.value) * 1000) || 3000);
    }
   }
   //window.onload = () => {

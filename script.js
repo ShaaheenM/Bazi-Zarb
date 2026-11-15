@@ -5,7 +5,6 @@ let digits = [1,2,3,4,5,6,7,8,9];
   const digitsEls = Array.from(document.querySelectorAll("input[type='checkbox']"));
   const questionTime = document.querySelector("#question-time");
   
-  let checkedNums = 9;
   digitsEls.forEach(el => {
     el.onchange = function() {
      if(this.checked){

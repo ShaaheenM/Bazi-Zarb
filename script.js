@@ -5,14 +5,17 @@ let digits = [1,2,3,4,5,6,7,8,9];
   const digitsEls = Array.from(document.querySelectorAll("input[type='checkbox']"));
   const questionTime = document.querySelector("#question-time");
   
+  let checkedNums = 9;
   digitsEls.forEach(el => {
     el.onchange = function() {
      if(this.checked){
       digits.push(Number(this.value));
       digits.sort();
+      checkedNums++;
      }
      else {
       digits = digits.filter(digit => Number(this.value) != digit);
+      checkedNums--;
      }
      clearTimeout(answerTimeout);
       showRanNums()
@@ -48,8 +51,8 @@ function makeRanNums() {
         }
      
     }
-
-    if (recentNums.length >= 10) {
+ 
+    if (recentNums.length >= 7) {
         recentNums.shift();
     }
  

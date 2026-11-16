@@ -260,17 +260,78 @@ h1 {
   font-weight: bold;
   cursor: pointer;
 }
+
+/*AI timeing setting*/
 .time-setting {
     display: flex;
     flex-direction: column;
-    gap: 8px;
-    margin: 15px 0;
+    gap: 12px;
+    margin: 20px 0;
+    width: 100%;
 }
 
-.time-setting input {
-    width: 100%;
-    padding: 10px;
+.time-setting label {
+    font-size: 15px;
+    font-weight: 600;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#time-value {
+    color: #2563eb;
     font-size: 18px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
+    font-weight: bold;
+}
+
+#question-time {
+    width: 100%;
+    cursor: pointer;
+    accent-color: #2563eb;
+}
+
+/*AI for score*/
+.score-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+    margin: 20px 0;
+}
+
+.score-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+    padding: 15px 8px;
+    background: #f3f4f6;
+    border-radius: 12px;
+    gap: 8px;
+}
+
+.score-label {
+    font-size: 12px;
+    color: #666;
+    text-align: center;
+}
+
+.score-value {
+    font-size: 25px;
+    font-weight: bold;
+    color: #222;
+}
+
+#modal-correct {
+    color: #16a34a;
+}
+
+#modal-wrong {
+    color: #dc2626;
+}
+
+#modal-score {
+    color: #2563eb;
 }

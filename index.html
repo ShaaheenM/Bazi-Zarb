@@ -50,17 +50,42 @@
     <button id="play-button" type="button">
       ▶ Play
     </button>
-  </div>
-  <div class="time-setting">
-    <label for="question-time">Seconds per question:</label>
+    
+    <!--time settings-->
+    <div class="time-setting">
+    <label for="question-time" dir="rtl">
+        مدت زمان هر سوال:
+        <span id="time-value">10</span>ثانیه
+    </label>
+
     <input
-        type="number"
+        type="range"
         id="question-time"
         min="1"
         max="60"
-        value="3"
+        value="10"
     >
+    </div>
+    <div class="score-container">
+    <div class="score-item">
+        <span class="score-label">امتیاز</span>
+        <span class="score-value" id="modal-score">0</span>
+    </div>
+
+    <div class="score-item">
+        <span class="score-label">صحیح</span>
+        <span class="score-value" id="modal-correct">0</span>
+    </div>
+
+    <div class="score-item">
+        <span class="score-label">اشتباه</span>
+        <span class="score-value" id="modal-wrong">0</span>
+    </div>
 </div>
+    
+  </div>
+  
+  
 </dialog>
   
   

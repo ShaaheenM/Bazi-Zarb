@@ -3,18 +3,31 @@ let digits = [1,2,3,4,5,6,7,8,9];
   const answerInput = document.getElementById("answer-input");
   const answerOutput = document.getElementById("answer-output");
   const digitsEls = Array.from(document.querySelectorAll("input[type='checkbox']"));
+  //const questionTime = document.querySelector("#question-time");
+
+  // time
   const questionTime = document.querySelector("#question-time");
+  const timeValue = document.querySelector("#time-value");
+  
+  //score
+  const scoreOutput = document.querySelector("#modal-score");
+  const correctsOutput = document.querySelector("#modal-correct");
+  const wrongsOutput = document.querySelector("#modal-wrong");
+
+  let score = 0;
+  let correctAnswers = 0;
+  let wrongAnswers = 0;
   
   digitsEls.forEach(el => {
     el.onchange = function() {
      if(this.checked){
       digits.push(Number(this.value));
       digits.sort();
-      checkedNums++;
+      //checkedNums++;
      }
      else {
       digits = digits.filter(digit => Number(this.value) != digit);
-      checkedNums--;
+      //checkedNums--;
      }
      clearTimeout(answerTimeout);
       showRanNums()
@@ -73,6 +86,7 @@ function makeRanNums() {
     answerInput.value = "";
     showRanNums();
     playWrongSound();
+     score--;
     return;
      
     }, (Number(questionTime.value) * 1000) || 3000);
@@ -88,6 +102,8 @@ function makeRanNums() {
     clearTimeout(answerTimeout);
     showRanNums();
     playWrongSound();
+    wrongAnswers++;
+    score--;
     return;
    }
     if(ranNum1 * ranNum2 == answerInput.value){
@@ -98,6 +114,8 @@ function makeRanNums() {
       showRanNums();
       highlightAnswer("highlight-true");
      playCorrectSound();
+     correctAnswers++;
+     score++;
     }
   }
   answerInput.oninput = function() {
@@ -188,6 +206,9 @@ const playButton = document.getElementById("play-button");
 
 stopButton.addEventListener("click", () => {
   stopModal.showModal();
+ scoreOutput.innerText = score;
+ correctsOutput.innerText = correctAnswers;
+ wrongsOutput.innerText = wrongAnswers;
   clearTimeout(answerTimeout);
 
   stopModal.classList.remove("hide");
@@ -214,3 +235,9 @@ window.onload = () => {
  stopModal.classList.remove("hide");
   stopModal.classList.add("show");
   }
+
+//AI fir time setting
+
+questionTime.addEventListener("input", () => {
+    timeValue.textContent = questionTime.value;
+});

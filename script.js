@@ -50,7 +50,7 @@ function makeRanNums() {
         const ran1 = Math.floor(Math.random() * digitsCount);
         ranNum1 = digits[ran1];
 
-        ranNum2 = Math.floor(Math.random() * 9);
+        ranNum2 = Math.floor(Math.random() * 9) + 1;
 
         nums = [ranNum1, ranNum2];
 
